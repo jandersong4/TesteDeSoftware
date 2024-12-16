@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1734301906514" clover="3.2.0">
+  <project timestamp="1734301906515" name="All files">
+    <metrics statements="32" coveredstatements="24" conditionals="16" coveredconditionals="10" methods="9" coveredmethods="8" elements="57" coveredelements="42" complexity="0" loc="32" ncloc="32" packages="1" files="1" classes="1"/>
+    <file name="auth-middlewares.js" path="/home/janderson/Documentos/jogoDeTabuleiro/server/middlewares/auth-middlewares.js">
+      <metrics statements="32" coveredstatements="24" conditionals="16" coveredconditionals="10" methods="9" coveredmethods="8"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="8" count="1" type="stmt"/>
+      <line num="9" count="1" type="cond" truecount="1" falsecount="1"/>
+      <line num="10" count="1" type="stmt"/>
+      <line num="13" count="0" type="stmt"/>
+      <line num="17" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="19" count="0" type="stmt"/>
+      <line num="24" count="0" type="stmt"/>
+      <line num="27" count="0" type="stmt"/>
+      <line num="32" count="0" type="stmt"/>
+      <line num="36" count="0" type="stmt"/>
+      <line num="43" count="2" type="stmt"/>
+      <line num="44" count="2" type="cond" truecount="1" falsecount="1"/>
+      <line num="45" count="0" type="stmt"/>
+      <line num="48" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="49" count="1" type="stmt"/>
+      <line num="53" count="1" type="stmt"/>
+      <line num="55" count="1" type="stmt"/>
+      <line num="60" count="2" type="stmt"/>
+      <line num="61" count="2" type="cond" truecount="1" falsecount="1"/>
+      <line num="62" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="63" count="1" type="stmt"/>
+      <line num="65" count="1" type="stmt"/>
+      <line num="72" count="2" type="stmt"/>
+      <line num="73" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="74" count="1" type="stmt"/>
+      <line num="75" count="1" type="cond" truecount="1" falsecount="1"/>
+      <line num="76" count="1" type="stmt"/>
+      <line num="81" count="2" type="stmt"/>
+      <line num="85" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
