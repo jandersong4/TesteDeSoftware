@@ -28,8 +28,7 @@ jobs:
       - run: npm test
         working-directory: server
       - name: Upload coverage reports to Codecov
-          uses: codecov/codecov-action@v5
-          with:
-            token: ${{ secrets.CODECOV_TOKEN }}
-            slug: jandersong4/TesteDeSoftware
-    
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: jandersong4/TesteDeSoftware
