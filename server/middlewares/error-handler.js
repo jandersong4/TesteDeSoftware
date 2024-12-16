@@ -1,4 +1,4 @@
-const {UniqueConstraintError} = require('sequelize');
+const { UniqueConstraintError } = require('sequelize');
 const AuthorizationError = require('../errors/AuthorizationError');
 const QueryError = require('../errors/QueryError');
 
@@ -9,6 +9,8 @@ function errorHandler(error, req, res, next) {
   if (error instanceof AuthorizationError) {
     status = 403; // Forbidden
   }
+
+  /* test */
 
   if (error instanceof QueryError) {
     status = 406; // Not acceptable
