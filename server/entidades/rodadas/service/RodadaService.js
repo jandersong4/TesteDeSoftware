@@ -1,6 +1,6 @@
-const Rodada = require('../model/Rodada');
-const PermissionError = require('../../errors/PermissionError');
-const QueryError = require('../../errors/QueryError');
+const Rodada = require("../model/Rodada");
+const PermissionError = require("../../../errors/PermissionError");
+const QueryError = require("../../../errors/QueryError");
 
 class RodadaService {
   async getAllRodadas() {
@@ -28,17 +28,16 @@ class RodadaService {
       throw new QueryError(`Não foi encontrado um rodada com ID ${id}`);
     }
 
-    const isAdmin = reqUserRole === 'admin';
+    const isAdmin = reqUserRole === "admin";
     const isRodadaOwner = reqUserId == rodada.UserId;
 
     if (!isAdmin && !isRodadaOwner) {
       throw new PermissionError(
-        'Você não tem permissão para deletar esse rodada',
+        "Você não tem permissão para deletar esse rodada"
       );
     }
     await rodada.destroy();
   }
 }
 
-
-module.exports = new RodadaService;
+module.exports = new RodadaService();

@@ -29,42 +29,6 @@ describe("auth-middlewares", () => {
   });
 
   describe("loginMiddleware", () => {
-    // it("deve retornar 204 e gerar um token", (done) => {
-    //   const mockUser = { id: 1, role: "user" };
-
-    //   // Mock da função authenticate do Passport
-    //   passport.authenticate.mockImplementation((strategy, callback) => {
-    //     return (req, res, next) => callback(null, mockUser, null);
-    //   });
-
-    //   // Mock da função sign do JWT
-    //   jwt.sign.mockReturnValue("mockedToken");
-
-    //   // Simular req.login de forma assíncrona
-    //   req.login.mockImplementation((user, options, callback) => {
-    //     callback(null); // Simula o sucesso do req.login
-    //   });
-
-    //   // Chamar o middleware
-    //   loginMiddleware(req, res, (err) => {
-    //     if (err) return done(err); // Lida com qualquer erro inesperado
-
-    //     // Verificações
-    //     expect(res.cookie).toHaveBeenCalledWith(
-    //       "jwt",
-    //       "mockedToken",
-    //       expect.objectContaining({
-    //         httpOnly: true,
-    //         secure: false,
-    //       })
-    //     );
-    //     expect(res.status).toHaveBeenCalledWith(204);
-    //     expect(res.end).toHaveBeenCalled();
-
-    //     done();
-    //   });
-    // });
-
     it("deve chamar next com erro em caso de falha", () => {
       passport.authenticate.mockImplementation((strategy, callback) => {
         return (req, res, next) => callback(new Error("Erro de autenticação"));

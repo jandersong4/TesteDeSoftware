@@ -1,5 +1,7 @@
 const MatchService = require("../service/matchService");
 const Match = require("../model/matchs");
+const QueryError = require("../../../errors/QueryError"); // Importação correta
+const PermissionError = require("../../../errors/PermissionError"); // Importação do PermissionError
 
 jest.mock("../model/matchs");
 
@@ -211,5 +213,82 @@ describe("MatchService", () => {
     await matchService.deleteMatch(1, 2, "admin");
 
     expect(match.destroy).toHaveBeenCalled();
+  });
+
+  test("should handle QueryError if match with specified ID is not found", async () => {
+    const matchId = 999;
+
+    // Simula que nenhum match foi encontrado
+    Match.findOne.mockResolvedValue(null);
+
+    let error;
+    try {
+      await matchService.getMatchById(matchId);
+    } catch (err) {
+      error = err; // Captura o erro para validação
+    }
+
+    // Verifica se o erro capturado é o esperado
+    expect(error).toBeInstanceOf(QueryError);
+    expect(error.message).toBe(
+      `Não foi encontrado uma partida com ID ${matchId}`
+    );
+    expect(Match.findOne).toHaveBeenCalledWith({
+      where: { id: matchId },
+      include: { association: "matchUserData", attributes: ["username"] },
+    });
+  });
+
+  test("should throw PermissionError if a non-admin tries to update another user's match", async () => {
+    const match = {
+      id: 1,
+      name: "Match 1",
+      image: "image_url_1",
+      UserId: 1,
+      update: jest.fn(),
+    };
+
+    // Simula que o match pertence a outro usuário
+    Match.findByPk.mockResolvedValue(match);
+
+    let error;
+    try {
+      await matchService.updateMatchInfo(1, 2, "user", {
+        name: "Updated Match",
+      });
+    } catch (err) {
+      error = err; // Captura o erro para validação
+    }
+
+    // Verifica se o erro capturado é o esperado
+    expect(error).toBeInstanceOf(PermissionError);
+    expect(error.message).toBe("Você não tem permissão para editar esse match");
+
+    // Verifica se as funções internas foram chamadas corretamente
+    expect(Match.findByPk).toHaveBeenCalledWith(1);
+    expect(match.update).not.toHaveBeenCalled();
+  });
+
+  test("should throw QueryError if match is not found when trying to delete", async () => {
+    const matchId = 999;
+    const reqUserId = 1;
+    const reqUserRole = "admin";
+
+    // Simula que nenhum match foi encontrado
+    Match.findByPk.mockResolvedValue(null);
+
+    let error;
+    try {
+      await matchService.deleteMatch(matchId, reqUserId, reqUserRole);
+    } catch (err) {
+      error = err; // Captura o erro para validação
+    }
+
+    // Verifica se o erro capturado é o esperado
+    expect(error).toBeInstanceOf(QueryError);
+    expect(error.message).toBe(`Não foi encontrado um match com ID ${matchId}`);
+
+    // Verifica se as funções internas foram chamadas corretamente
+    expect(Match.findByPk).toHaveBeenCalledWith(matchId);
   });
 });

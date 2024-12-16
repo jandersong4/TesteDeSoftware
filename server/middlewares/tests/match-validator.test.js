@@ -29,65 +29,6 @@ describe("matchValidate Middleware", () => {
   });
 
   describe("createMatch Validations", () => {
-    // it("deve retornar erro se o campo name estiver ausente", () => {
-    //   // Configuramos req.body como vazio
-    //   req.body = {};
-
-    //   // Invocamos o middleware
-    //   const middleware = matchValidate("createMatch");
-    //   middleware(req, res, next);
-
-    //   // Verificamos se o middleware retornou o status e o erro esperados
-    //   expect(res.status).toHaveBeenCalledTimes(1);
-    //   expect(res.status).toHaveBeenCalledWith(400);
-    //   expect(res.json).toHaveBeenCalledWith({
-    //     errors: expect.arrayContaining([
-    //       expect.objectContaining({
-    //         msg: "Você deve enviar um nome para a partida!",
-    //       }),
-    //     ]),
-    //   });
-    // });
-
-    // it("deve retornar erro se o campo name estiver vazio", () => {
-    //   req.body.name = "";
-    //   const middleware = matchValidate("createMatch");
-    //   middleware(req, res, next);
-    //   expect(res.status).toHaveBeenCalledWith(400);
-    //   expect(res.json).toHaveBeenCalledWith({
-    //     errors: expect.arrayContaining([
-    //       expect.objectContaining({
-    //         msg: "O nome da partida não pode ficar vazio!",
-    //       }),
-    //     ]),
-    //   });
-    // });
-    // it("deve retornar erro se o campo image estiver ausente", () => {
-    //   req.body.name = "Partida 1";
-    //   const middleware = matchValidate("createMatch");
-    //   middleware(req, res, next);
-    //   expect(res.status).toHaveBeenCalledWith(400);
-    //   expect(res.json).toHaveBeenCalledWith({
-    //     errors: expect.arrayContaining([
-    //       expect.objectContaining({
-    //         msg: "O campo de imagem deve estar preenchido!",
-    //       }),
-    //     ]),
-    //   });
-    // });
-    // it("deve retornar erro se o campo image não for uma URL válida", () => {
-    //   req.body = { name: "Partida 1", image: "not-a-url" };
-    //   const middleware = matchValidate("createMatch");
-    //   middleware(req, res, next);
-    //   expect(res.status).toHaveBeenCalledWith(400);
-    //   expect(res.json).toHaveBeenCalledWith({
-    //     errors: expect.arrayContaining([
-    //       expect.objectContaining({
-    //         msg: "A imagem deve ser uma URL",
-    //       }),
-    //     ]),
-    //   });
-    // });
     it("deve passar com campos válidos", () => {
       req.body = { name: "Partida 1", image: "http://example.com/image.png" };
       const middleware = matchValidate("createMatch");
@@ -97,32 +38,6 @@ describe("matchValidate Middleware", () => {
   });
 
   describe("updateMatch Validations", () => {
-    // it("deve retornar erro se o campo name estiver vazio", () => {
-    //   req.body = { name: "" };
-    //   const middleware = matchValidate("updateMatch");
-    //   middleware(req, res, next);
-    //   expect(res.status).toHaveBeenCalledWith(400);
-    //   expect(res.json).toHaveBeenCalledWith({
-    //     errors: expect.arrayContaining([
-    //       expect.objectContaining({
-    //         msg: "O nome da partida não pode ficar vazio!",
-    //       }),
-    //     ]),
-    //   });
-    // });
-    // it("deve retornar erro se o campo image não for uma URL válida", () => {
-    //   req.body = { image: "not-a-url" };
-    //   const middleware = matchValidate("updateMatch");
-    //   middleware(req, res, next);
-    //   expect(res.status).toHaveBeenCalledWith(400);
-    //   expect(res.json).toHaveBeenCalledWith({
-    //     errors: expect.arrayContaining([
-    //       expect.objectContaining({
-    //         msg: "A imagem deve ser uma URL!",
-    //       }),
-    //     ]),
-    //   });
-    // });
     it("deve passar com campos válidos", () => {
       req.body = {
         name: "Partida Atualizada",
