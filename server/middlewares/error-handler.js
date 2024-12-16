@@ -10,8 +10,6 @@ function errorHandler(error, req, res, next) {
     status = 403; // Forbidden
   }
 
-  /* test */
-
   if (error instanceof QueryError) {
     status = 406; // Not acceptable
   }
